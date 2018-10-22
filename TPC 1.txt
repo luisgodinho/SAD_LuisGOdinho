@@ -1,0 +1,20 @@
+open = {'(','{','['}
+close = {')','}',']'}
+direita_esquerda = {')':'(','}':'{',']':'['}
+
+def solution(S):
+  y = []
+  for char in S:
+    if char in open:
+      y.append(char)
+    elif char in close:
+      if not y or y.pop() != direita_esquerda[char]:
+        return 0
+
+  if y:
+    return 0
+  return 1
+
+S = "{[() ()]}"
+solution(S)
+
